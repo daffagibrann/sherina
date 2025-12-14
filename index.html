@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sherina 🤍</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: radial-gradient(circle at top, #ffd1dc, #ff4d6d);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Floating glow */
+body::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 60%);
+    animation: glowMove 12s infinite linear;
+}
+
+@keyframes glowMove {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 25px;
+    max-width: 360px;
+    z-index: 2;
+    animation: fadeUp 2s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title typing */
+.title {
+    font-size: 34px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    width: 0;
+    animation: typing 3s steps(18) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing {
+    to { width: 18ch; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.subtitle {
+    margin-top: 15px;
+    font-size: 16px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+button {
+    margin-top: 25px;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px white; }
+    50% { box-shadow: 0 0 30px white; }
+    100% { box-shadow: 0 0 10px white; }
+}
+
+.message {
+    display: none;
+    margin-top: 25px;
+    background: rgba(255,255,255,0.25);
+    padding: 18px;
+    border-radius: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    animation: fadeUp 1.5s ease;
+}
+
+/* Hearts & sparkles */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: fallSpin linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fallSpin {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO (LOCAL FILE, PASTI BUNYI DI HP) -->
+<audio id="music" preload="auto" loop>
+    <source src="beautiful-in-white.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <div class="title">LOVE SHERINA 🤍</div>
+    <div class="subtitle">Tap tombol ini ya… aku punya banyak hal untuk kamu 🤍</div>
+
+    <button onclick="startLove()">🤍 Buka Pesan</button>
+
+    <div class="message" id="msg">
+        Sherina sayang 🤍<br><br>
+
+        Sejak kamu hadir, dunia terasa lebih tenang.  
+        Senyummu adalah tempat paling nyaman untuk pulang,  
+        dan tawamu adalah musik terindah yang selalu ingin aku dengar.<br><br>
+
+        Aku mungkin tidak sempurna,  
+        tapi perasaanku untukmu selalu utuh.  
+        Aku ingin berjalan bersamamu,  
+        melewati hari biasa, hari sulit,  
+        dan hari-hari paling bahagia dalam hidup kita.<br><br>
+
+        Jika suatu hari nanti aku lelah,  
+        aku ingin tetap menggenggam tanganmu.  
+        Jika suatu hari nanti aku bahagia,  
+        itu karena kamu ada di sampingku 🤍<br><br>
+
+        Terima kasih sudah menjadi bagian terindah dalam hidupku.  
+        Aku mencintaimu, hari ini, esok, dan seterusnya 🤍
+    </div>
+</div>
+
+<script>
+function startLove() {
+    // MUSIC (WAJIB USER INTERACTION → AMAN DI HP)
+    const music = document.getElementById("music");
+    music.play();
+
+    // SHOW MESSAGE
+    document.getElementById("msg").style.display = "block";
+}
+
+// falling hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(createHeart, 250);
+</script>
+
+</body>
+</html>
