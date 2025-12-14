@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sherina ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(270deg, #ff4d6d, #ff758f, #ff9aa2);
+    background-size: 600% 600%;
+    animation: bgMove 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    text-align: center;
+    color: white;
+    padding: 25px;
+    animation: fadeUp 2s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typing effect */
+.typing {
+    font-size: 38px;
+    font-weight: bold;
+    border-right: 3px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3s steps(14) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing {
+    to { width: 14ch; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.subtext {
+    font-size: 18px;
+    margin-top: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+button {
+    margin-top: 25px;
+    padding: 14px 34px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px white; }
+    50% { box-shadow: 0 0 25px white; }
+    100% { box-shadow: 0 0 10px white; }
+}
+
+.message {
+    display: none;
+    margin-top: 25px;
+    background: rgba(255,255,255,0.25);
+    padding: 18px;
+    border-radius: 20px;
+    animation: fadeUp 1s ease;
+    font-size: 16px;
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: fallRotate linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fallRotate {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .typing { font-size: 32px; }
+    .subtext { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Musik (DIPUTAR SETELAH TAP) -->
+<audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <div class="typing">LOVE SHERINA ❤️</div>
+    <div class="subtext">Tap tombol di bawah ya 💕</div>
+
+    <button onclick="openAll()">💖 Buka Pesan & Musik</button>
+
+    <div class="message" id="msg">
+        Sherina ❤️<br><br>
+        Terima kasih sudah hadir dalam hidupku.  
+        Semoga kita selalu bersama dan bahagia 💖
+    </div>
+</div>
+
+<script>
+function openAll() {
+    // Play music (AMAN DI HP)
+    const music = document.getElementById("music");
+    music.play();
+
+    // Show message
+    document.getElementById("msg").style.display = "block";
+}
+
+// Falling hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 250);
+</script>
+
+</body>
+</html>
